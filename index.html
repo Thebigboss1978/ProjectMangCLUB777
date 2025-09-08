@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>City Plaza Pyramids View Hotel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Falling Stars Background -->
+  <div id="falling-stars-bg" style="position:fixed;inset:0;z-index:-1;overflow:hidden;">
+    <canvas id="falling-stars-canvas"></canvas>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Hotel Logo" />
+      <h1>City Plaza Pyramids View</h1>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <h2>City Plaza Pyramids View Hotel</h2>
+    <p>Luxury hotel steps from the Pyramids. Your comfort, our history.</p>
+  </section>
+
+  <!-- Offers Section -->
+  <section class="offers" style="text-align:center; margin:2em 0;">
+    <h2>Special Offers</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:2em; justify-content:center;">
+      <div style="background:#fff url('assets/room.jpg') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
+        <h3>VIP Balcony Room</h3>
+        <p>Private balcony with pyramid view. Limited rooms available.</p>
+        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $120/night</div>
+        <a href="https://www.booking.com/hotel/eg/city-plaza-pyramids-view.en.html" target="_blank" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#43c6ac; color:#fff; font-weight:bold; text-decoration:none;">Book Now</a>
+      </div>
+      <div style="background:#fff url('assets/AlArabClub777.png') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
+        <h3>Family Suite</h3>
+        <p>Spacious suite for families. Comfort and convenience.</p>
+        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $150/night</div>
+        <a href="https://www.booking.com/hotel/eg/city-plaza-pyramids-view.en.html" target="_blank" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#43c6ac; color:#fff; font-weight:bold; text-decoration:none;">Book Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tours Section -->
+  <section class="tours" style="text-align:center; margin:2em 0;">
+    <h2>Our Tours</h2>
+    <div style="display:flex; flex-wrap:wrap; gap:2em; justify-content:center;">
+      <div style="background:#fff url('assets/pyramids.jpg') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
+        <h3>Giza Pyramids & Sphinx</h3>
+        <p>Guided tour of the Great Pyramids and Sphinx.</p>
+        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $50</div>
+        <a href="#" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#43c6ac; color:#fff; font-weight:bold; text-decoration:none;">Book Tour</a>
+      </div>
+      <div style="background:#fff url('assets/camel.jpg') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
+        <h3>Camel Ride Adventure</h3>
+        <p>Ride through the desert like the ancients.</p>
+        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $25</div>
+        <a href="#" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#f8b500; color:#fff; font-weight:bold; text-decoration:none;">Book Tour</a>
+      </div>
+      <div style="background:#fff url('assets/saqqara.jpg') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
+        <h3>Saqqara Step Pyramid</h3>
+        <p>Visit the Step Pyramid and ancient tombs.</p>
+        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $40</div>
+        <a href="#" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#43c6ac; color:#fff; font-weight:bold; text-decoration:none;">Book Tour</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Personalized Experience Section -->
+  <section class="personalized-experience" style="background: linear-gradient(120deg, #fceabb 0%, #f8b500 100%); padding: 2em 0; text-align: center; margin: 2em 0; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.10);">
+    <h2 style="font-size: 2em; color: #2a4a5b; margin-bottom: 0.5em; letter-spacing: 1px;">Personalize Your Experience</h2>
+    <p style="font-size: 1.1em; color: #555;">Let us help you create your perfect day in Egypt. Tell us your interests and maybe you'll win a special surprise!</p>
+    <button style="padding: 0.7em 2em; border-radius: 8px; background: #f8b500; color: #fff; border: none; font-weight: bold; cursor: pointer; font-size: 1.1em;">Personalize My Day</button>
+  </section>
+
+  <!-- AI Concierge Section -->
+  <section class="ai-concierge" style="background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%); padding: 2em 0; text-align: center; margin: 2em 0; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.10);">
+    <h2 style="font-size: 2em; color: #2a4a5b; margin-bottom: 0.5em; letter-spacing: 1px;">Concierge Chat</h2>
+    <div style="max-width: 500px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); padding: 1.5em;">
+      <input type="text" placeholder="marhaba, ezzayyak?" style="width: 80%; padding: 0.7em; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1em;" />
+      <button style="padding: 0.7em 2em; border-radius: 8px; background: #82b1ff; color: #fff; border: none; font-weight: bold; cursor: pointer;">Ask Concierge</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer style="background:#ffd66b; color:#222; text-align:center; padding:1em 0; margin-top:2em; border-radius:12px 12px 0 0; font-size:1em;">
+    Elegant chic, Family hotel and hospitality respond tourist experience since they born.
+  </footer>
+
+  <script>
+    // Falling stars interactive background
+    const canvas = document.getElementById('falling-stars-canvas');
+    const ctx = canvas.getContext('2d');
+    let W = window.innerWidth, H = window.innerHeight;
+    canvas.width = W; canvas.height = H;
+    window.addEventListener('resize', ()=>{ W=window.innerWidth; H=window.innerHeight; canvas.width=W; canvas.height=H; });
+    // Star object
+    function Star(){
+      this.x = Math.random()*W;
+      this.y = Math.random()*H;
+      this.r = 2 + Math.random()*2;
+      this.speed = 1 + Math.random()*2;
+      this.dx = 0;
+      this.color = `rgba(255,255,255,${0.7+Math.random()*0.3})`;
+    }
+    Star.prototype.draw = function(){
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
+      ctx.fillStyle = this.color;
+      ctx.shadowColor = '#fff';
+      ctx.shadowBlur = 8;
+      ctx.fill();
+      ctx.shadowBlur = 0;
+    };
+    Star.prototype.update = function(){
+      this.y += this.speed;
+      this.x += this.dx;
+      if(this.y > H){ this.y = -10; this.x = Math.random()*W; }
+      if(this.x < 0){ this.x = W; }
+      if(this.x > W){ this.x = 0; }
+      this.dx *= 0.95;
+    };
+    // Stars array
+    const stars = Array.from({length:80}, ()=>new Star());
+    // Mouse interaction
+    let mouse = {x:W/2, y:H/2, down:false, clickCount:0};
+    canvas.addEventListener('mousemove', e=>{ mouse.x=e.clientX; mouse.y=e.clientY; });
+    canvas.addEventListener('touchmove', e=>{
+      if(e.touches.length){ mouse.x=e.touches[0].clientX; mouse.y=e.touches[0].clientY; }
+    });
+    // Click to spawn shape
+    let shapes = [];
+    canvas.addEventListener('click', e=>{
+      mouse.clickCount++;
+      if(mouse.clickCount>=7){ window.location.href='https://alarabclub777.vercel.app/'; return; }
+      shapes.push({x:e.clientX, y:e.clientY, r:16, type: ['star','heart','circle'][Math.floor(Math.random()*3)], t:0});
+    });
+    // Draw shape
+    function drawShape(s){
+      ctx.save();
+      ctx.translate(s.x, s.y);
+      ctx.globalAlpha = 0.7;
+      if(s.type==='star'){
+        ctx.beginPath();
+        for(let i=0;i<5;i++){
+          ctx.lineTo(Math.cos((18+i*72)/180*Math.PI)*s.r, Math.sin((18+i*72)/180*Math.PI)*s.r);
+          ctx.lineTo(Math.cos((54+i*72)/180*Math.PI)*s.r/2, Math.sin((54+i*72)/180*Math.PI)*s.r/2);
+        }
+        ctx.closePath();
+        ctx.fillStyle='#ffd66b'; ctx.fill();
+      }else if(s.type==='heart'){
+        ctx.beginPath();
+        ctx.moveTo(0,0);
+        ctx.bezierCurveTo(-s.r, -s.r, -s.r, s.r/2, 0, s.r);
+        ctx.bezierCurveTo(s.r, s.r/2, s.r, -s.r, 0,0);
+        ctx.fillStyle='#ff6ec7'; ctx.fill();
+      }else{
+        ctx.beginPath(); ctx.arc(0,0,s.r,0,Math.PI*2); ctx.fillStyle='#6ec3ff'; ctx.fill();
+      }
+      ctx.restore();
+    }
+    // Animate
+    function animate(){
+      ctx.clearRect(0,0,W,H);
+      for(const s of stars){
+        // Move stars toward mouse if close
+        let dx = mouse.x-s.x, dy = mouse.y-s.y, dist = Math.sqrt(dx*dx+dy*dy);
+        if(dist<80){ s.dx += dx/dist*0.2; }
+        s.update(); s.draw();
+      }
+      for(const s of shapes){ drawShape(s); s.t++; s.r+=0.5; if(s.t>30) shapes.shift(); }
+      requestAnimationFrame(animate);
+    }
+    animate();
+  </script>
+  <script>
+// Floating pyramid of sevens that follows the mouse (no variable conflicts)
+const pyramidCanvas777 = document.createElement('canvas');
+pyramidCanvas777.id = 'pyramid-777-canvas';
+pyramidCanvas777.style.position = 'fixed';
+pyramidCanvas777.style.pointerEvents = 'none';
+pyramidCanvas777.style.zIndex = '9999';
+document.body.appendChild(pyramidCanvas777);
+let pyramidW = window.innerWidth, pyramidH = window.innerHeight;
+pyramidCanvas777.width = pyramidW; pyramidCanvas777.height = pyramidH;
+window.addEventListener('resize', ()=>{
+  pyramidW=window.innerWidth; pyramidH=window.innerHeight;
+  pyramidCanvas777.width=pyramidW; pyramidCanvas777.height=pyramidH;
+});
+let pyramidMouse = {x:pyramidW/2, y:pyramidH/2};
+document.addEventListener('mousemove', e=>{ pyramidMouse.x=e.clientX; pyramidMouse.y=e.clientY; });
+document.addEventListener('touchmove', e=>{
+  if(e.touches.length){ pyramidMouse.x=e.touches[0].clientX; pyramidMouse.y=e.touches[0].clientY; }
+});
+function drawPyramid777(ctx, x, y, size=60){
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.font = `${size/3}px Papyrus, serif`;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#ffd66b';
+  // Pyramid rows
+  for(let row=0; row<3; row++){
+    for(let col=0; col<=row; col++){
+      let px = (col-row/2)*size*0.7;
+      let py = row*size*0.6;
+      ctx.fillText('7', px, py);
+    }
+  }
+  ctx.restore();
+}
+function animatePyramid(){
+  const ctx = pyramidCanvas777.getContext('2d');
+  ctx.clearRect(0,0,pyramidW,pyramidH);
+  drawPyramid777(ctx, pyramidMouse.x, pyramidMouse.y, 60);
+  requestAnimationFrame(animatePyramid);
+}
+animatePyramid();
+</script>
+</body>
+</html>

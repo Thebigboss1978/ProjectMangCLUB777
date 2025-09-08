@@ -4,223 +4,172 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>City Plaza Pyramids View Hotel</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    :root{
+      --bg:#000; --gold:#ffd66b; --muted:#c9c9c9; --accent:#4aa3ff; --card:#111;
+    }
+    body{
+      margin:0; font-family: "Trebuchet MS", sans-serif;
+      background:var(--bg); color:white; text-align:center;
+    }
+    header{
+      position:relative; padding:40px 20px; background:#111;
+    }
+    header img{max-height:80px;}
+    header h1{color:var(--gold); margin:15px 0; font-size:32px;}
+    header p{color:var(--muted); line-height:1.6; max-width:700px; margin:auto;}
+
+    .btn{
+      display:inline-block; margin:20px; padding:14px 28px;
+      background:var(--gold); color:black; text-decoration:none;
+      border-radius:12px; font-weight:bold; font-size:18px;
+      box-shadow:0 0 15px rgba(255,214,107,0.6);
+      transition:all 0.3s ease;
+    }
+    .btn:hover{background:#fff2c0; transform:scale(1.05);}
+
+    .video-container{
+      position:relative; width:100%; max-width:900px; margin:30px auto;
+    }
+    .video-container video{
+      width:100%; border-radius:14px; object-fit:cover;
+    }
+
+    section{padding:50px 20px;}
+    section h2{color:var(--gold); margin-bottom:20px; font-size:26px;}
+    section p{max-width:800px; margin:auto; color:var(--muted); line-height:1.6;}
+
+    .grid{
+      display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:24px; margin-top:30px;
+    }
+    .card{
+      background:var(--card); border-radius:14px; padding:20px;
+      box-shadow:0 0 12px rgba(255,214,107,0.4);
+      text-align:left;
+    }
+    .card img{width:100%; height:200px; object-fit:cover; border-radius:10px;}
+    .card h3{color:var(--gold); margin:14px 0;}
+    .card p{color:var(--muted); font-size:15px;}
+    .card .price{color:var(--gold); font-weight:bold; margin:8px 0;}
+    .action-btn{
+      display:inline-block; margin-top:12px; padding:10px 18px;
+      background:var(--accent); color:#fff; text-decoration:none;
+      border-radius:8px; font-size:14px; transition:0.3s;
+    }
+    .action-btn:hover{background:#6bb8ff;}
+
+    .highlight{
+      border:2px solid var(--gold); box-shadow:0 0 20px rgba(255,214,107,0.7);
+    }
+
+    footer{
+      margin-top:40px; padding:25px; border-top:1px solid #333;
+    }
+    footer img{max-height:60px;}
+    footer a{color:var(--gold); text-decoration:none; display:block; margin-top:12px;}
+    .signature{margin-top:12px; font-size:13px; color:var(--gold); font-style:italic;}
+  </style>
 </head>
 <body>
 
-  <!-- Falling Stars Background -->
-  <div id="falling-stars-bg" style="position:fixed;inset:0;z-index:-1;overflow:hidden;">
-    <canvas id="falling-stars-canvas"></canvas>
+<header>
+  <img src="assets/logo.png" alt="Hotel Logo" />
+  <h1>City Plaza Pyramids View Hotel</h1>
+  <p>
+    Welcome to <strong>City Plaza</strong>, your gateway to Giza.<br>
+    Luxury rooms, panoramic views, and unforgettable tours — all under the spirit of <em>AlArab Club 777</em>.
+  </p>
+  <a href="https://www.booking.com/Share-Ova7Oz" target="_blank" class="btn">Book on Booking.com</a>
+</header>
+
+<!-- Video -->
+<div class="video-container">
+  <video autoplay muted loop playsinline>
+    <source src="assets/intro.mp4" type="video/mp4">
+    Your browser does not support video.
+  </video>
+</div>
+
+<!-- Rooms Section -->
+<section id="rooms">
+  <h2>Our Rooms</h2>
+  <p>From cozy comfort to luxury with a balcony — choose the stay that fits your journey.</p>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/room-standard.jpg" alt="Standard Room">
+      <h3>Standard Room</h3>
+      <p>Perfect for solo travelers or couples. Modern amenities with a warm touch.</p>
+      <div class="price">$60 / night</div>
+      <a href="https://wa.me/201002446123?text=I%20want%20to%20book%20Standard%20Room" class="action-btn">📲 Contact via WhatsApp</a>
+    </div>
+    <div class="card">
+      <img src="assets/room-deluxe.jpg" alt="Deluxe Room">
+      <h3>Deluxe Room</h3>
+      <p>Spacious with elegant design and extra comfort. Ideal for families.</p>
+      <div class="price">$85 / night</div>
+      <a href="https://wa.me/201002446123?text=I%20want%20to%20book%20Deluxe%20Room" class="action-btn">📅 Book Now</a>
+    </div>
+    <div class="card highlight">
+      <img src="assets/room-balcony.jpg" alt="Balcony Suite">
+      <h3>Balcony Suite</h3>
+      <p>Private balcony with breathtaking views of the pyramids. Best choice for dreamers.</p>
+      <div class="price">$120 / night</div>
+      <a href="https://wa.me/201002446123?text=I%20want%20to%20book%20Balcony%20Suite" class="action-btn">✨ Reserve Balcony</a>
+    </div>
   </div>
+</section>
 
-  <!-- Header -->
-  <header>
-    <div class="logo">
-      <img src="assets/logo.png" alt="Hotel Logo" />
-      <h1>City Plaza Pyramids View</h1>
+<!-- Special Offer -->
+<section id="offer">
+  <h2>Special Exclusive Offer</h2>
+  <p>
+    ✈️ From Airport to Pyramids and back — full-package experience including 3 nights + tours.<br>
+    <strong>Only $1500 (without flight ticket)</strong><br>
+    Exclusive on <a href="https://alarabclub777ai.vercel.app/" target="_blank">AlArab Portal</a>.
+  </p>
+  <a href="https://wa.me/201002446123?text=I%20want%20the%20Airport%20to%20Pyramids%20Offer" class="btn">🔥 Claim This Offer</a>
+</section>
+
+<!-- Tours Section -->
+<section id="tours">
+  <h2>Exclusive Tours & Adventures</h2>
+  <div class="grid">
+    <div class="card">
+      <img src="assets/camel.jpg" alt="Camel Ride">
+      <h3>Camel Ride — Pharaohs' Pilgrimage</h3>
+      <p>Walk the golden sands like kings of old.<br>Distance: 3km</p>
+      <div class="price">$20–35</div>
+      <a href="https://wa.me/201002446123?text=Book%20Camel%20Ride" class="action-btn">🐪 Book Camel Ride</a>
     </div>
-  </header>
-
-  <!-- Hero -->
-  <section class="hero">
-    <h2>City Plaza Pyramids View Hotel</h2>
-    <p>Luxury hotel steps from the Pyramids. Your comfort, our history.</p>
-  </section>
-
-  <!-- Offers Section -->
-  <section class="offers" style="text-align:center; margin:2em 0;">
-    <h2>Special Offers</h2>
-    <div style="display:flex; flex-wrap:wrap; gap:2em; justify-content:center;">
-      <div style="background:#fff url('assets/room.jpg') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
-        <h3>VIP Balcony Room</h3>
-        <p>Private balcony with pyramid view. Limited rooms available.</p>
-        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $120/night</div>
-        <a href="https://www.booking.com/hotel/eg/city-plaza-pyramids-view.en.html" target="_blank" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#43c6ac; color:#fff; font-weight:bold; text-decoration:none;">Book Now</a>
-      </div>
-      <div style="background:#fff url('assets/AlArabClub777.png') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
-        <h3>Family Suite</h3>
-        <p>Spacious suite for families. Comfort and convenience.</p>
-        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $150/night</div>
-        <a href="https://www.booking.com/hotel/eg/city-plaza-pyramids-view.en.html" target="_blank" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#43c6ac; color:#fff; font-weight:bold; text-decoration:none;">Book Now</a>
-      </div>
+    <div class="card">
+      <img src="assets/horse.jpg" alt="Horse Ride">
+      <h3>Horse Ride — Divine Steed</h3>
+      <p>Ride like an ancient knight across the desert horizon.<br>Distance: 5km</p>
+      <div class="price">$25–40</div>
+      <a href="https://wa.me/201002446123?text=Book%20Horse%20Ride" class="action-btn">🐎 Reserve Horse</a>
     </div>
-  </section>
-
-  <!-- Tours Section -->
-  <section class="tours" style="text-align:center; margin:2em 0;">
-    <h2>Our Tours</h2>
-    <div style="display:flex; flex-wrap:wrap; gap:2em; justify-content:center;">
-      <div style="background:#fff url('assets/pyramids.jpg') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
-        <h3>Giza Pyramids & Sphinx</h3>
-        <p>Guided tour of the Great Pyramids and Sphinx.</p>
-        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $50</div>
-        <a href="#" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#43c6ac; color:#fff; font-weight:bold; text-decoration:none;">Book Tour</a>
-      </div>
-      <div style="background:#fff url('assets/camel.jpg') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
-        <h3>Camel Ride Adventure</h3>
-        <p>Ride through the desert like the ancients.</p>
-        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $25</div>
-        <a href="#" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#f8b500; color:#fff; font-weight:bold; text-decoration:none;">Book Tour</a>
-      </div>
-      <div style="background:#fff url('assets/saqqara.jpg') center/cover no-repeat; color:#222; border-radius:16px; box-shadow:0 2px 16px rgba(0,0,0,0.10); padding:1.5em; min-width:220px; max-width:300px;">
-        <h3>Saqqara Step Pyramid</h3>
-        <p>Visit the Step Pyramid and ancient tombs.</p>
-        <div style="font-weight:bold; color:#f8b500; margin:0.5em 0;">From $40</div>
-        <a href="#" style="display:inline-block; padding:0.5em 1.5em; border-radius:8px; background:#43c6ac; color:#fff; font-weight:bold; text-decoration:none;">Book Tour</a>
-      </div>
+    <div class="card">
+      <img src="assets/buggy.jpg" alt="Buggy Adventure">
+      <h3>Buggy Adventure — Modern Chariot</h3>
+      <p>Fast, thrilling, and free across the dunes.<br>Distance: 10km</p>
+      <div class="price">$50–75</div>
+      <a href="https://wa.me/201002446123?text=Book%20Buggy" class="action-btn">🚙 Book Buggy</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Personalized Experience Section -->
-  <section class="personalized-experience" style="background: linear-gradient(120deg, #fceabb 0%, #f8b500 100%); padding: 2em 0; text-align: center; margin: 2em 0; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.10);">
-    <h2 style="font-size: 2em; color: #2a4a5b; margin-bottom: 0.5em; letter-spacing: 1px;">Personalize Your Experience</h2>
-    <p style="font-size: 1.1em; color: #555;">Let us help you create your perfect day in Egypt. Tell us your interests and maybe you'll win a special surprise!</p>
-    <button style="padding: 0.7em 2em; border-radius: 8px; background: #f8b500; color: #fff; border: none; font-weight: bold; cursor: pointer; font-size: 1.1em;">Personalize My Day</button>
-  </section>
+<!-- Contact Section -->
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p><strong>WhatsApp:</strong> +20 100 2446 123</p>
+  <p><strong>Website:</strong> <a href="https://alarabclub777ai.vercel.app/" target="_blank">AlArab Club 777</a></p>
+</section>
 
-  <!-- AI Concierge Section -->
-  <section class="ai-concierge" style="background: linear-gradient(120deg, #e0eafc 0%, #cfdef3 100%); padding: 2em 0; text-align: center; margin: 2em 0; border-radius: 18px; box-shadow: 0 4px 32px rgba(0,0,0,0.10);">
-    <h2 style="font-size: 2em; color: #2a4a5b; margin-bottom: 0.5em; letter-spacing: 1px;">Concierge Chat</h2>
-    <div style="max-width: 500px; margin: 0 auto; background: #fff; border-radius: 12px; box-shadow: 0 2px 16px rgba(0,0,0,0.08); padding: 1.5em;">
-      <input type="text" placeholder="marhaba, ezzayyak?" style="width: 80%; padding: 0.7em; border-radius: 8px; border: 1px solid #ccc; margin-bottom: 1em;" />
-      <button style="padding: 0.7em 2em; border-radius: 8px; background: #82b1ff; color: #fff; border: none; font-weight: bold; cursor: pointer;">Ask Concierge</button>
-    </div>
-  </section>
+<footer>
+  <p>© 2025 City Plaza Hotel. All rights reserved.</p>
+  <p>Designed & Powered by <strong>Alarab Club 777</strong></p>
+</footer>
 
-  <!-- Footer -->
-  <footer style="background:#ffd66b; color:#222; text-align:center; padding:1em 0; margin-top:2em; border-radius:12px 12px 0 0; font-size:1em;">
-    Elegant chic, Family hotel and hospitality respond tourist experience since they born.
-  </footer>
-
-  <script>
-    // Falling stars interactive background
-    const canvas = document.getElementById('falling-stars-canvas');
-    const ctx = canvas.getContext('2d');
-    let W = window.innerWidth, H = window.innerHeight;
-    canvas.width = W; canvas.height = H;
-    window.addEventListener('resize', ()=>{ W=window.innerWidth; H=window.innerHeight; canvas.width=W; canvas.height=H; });
-    // Star object
-    function Star(){
-      this.x = Math.random()*W;
-      this.y = Math.random()*H;
-      this.r = 2 + Math.random()*2;
-      this.speed = 1 + Math.random()*2;
-      this.dx = 0;
-      this.color = `rgba(255,255,255,${0.7+Math.random()*0.3})`;
-    }
-    Star.prototype.draw = function(){
-      ctx.beginPath();
-      ctx.arc(this.x, this.y, this.r, 0, Math.PI*2);
-      ctx.fillStyle = this.color;
-      ctx.shadowColor = '#fff';
-      ctx.shadowBlur = 8;
-      ctx.fill();
-      ctx.shadowBlur = 0;
-    };
-    Star.prototype.update = function(){
-      this.y += this.speed;
-      this.x += this.dx;
-      if(this.y > H){ this.y = -10; this.x = Math.random()*W; }
-      if(this.x < 0){ this.x = W; }
-      if(this.x > W){ this.x = 0; }
-      this.dx *= 0.95;
-    };
-    // Stars array
-    const stars = Array.from({length:80}, ()=>new Star());
-    // Mouse interaction
-    let mouse = {x:W/2, y:H/2, down:false, clickCount:0};
-    canvas.addEventListener('mousemove', e=>{ mouse.x=e.clientX; mouse.y=e.clientY; });
-    canvas.addEventListener('touchmove', e=>{
-      if(e.touches.length){ mouse.x=e.touches[0].clientX; mouse.y=e.touches[0].clientY; }
-    });
-    // Click to spawn shape
-    let shapes = [];
-    canvas.addEventListener('click', e=>{
-      mouse.clickCount++;
-      if(mouse.clickCount>=7){ window.location.href='https://alarabclub777.vercel.app/'; return; }
-      shapes.push({x:e.clientX, y:e.clientY, r:16, type: ['star','heart','circle'][Math.floor(Math.random()*3)], t:0});
-    });
-    // Draw shape
-    function drawShape(s){
-      ctx.save();
-      ctx.translate(s.x, s.y);
-      ctx.globalAlpha = 0.7;
-      if(s.type==='star'){
-        ctx.beginPath();
-        for(let i=0;i<5;i++){
-          ctx.lineTo(Math.cos((18+i*72)/180*Math.PI)*s.r, Math.sin((18+i*72)/180*Math.PI)*s.r);
-          ctx.lineTo(Math.cos((54+i*72)/180*Math.PI)*s.r/2, Math.sin((54+i*72)/180*Math.PI)*s.r/2);
-        }
-        ctx.closePath();
-        ctx.fillStyle='#ffd66b'; ctx.fill();
-      }else if(s.type==='heart'){
-        ctx.beginPath();
-        ctx.moveTo(0,0);
-        ctx.bezierCurveTo(-s.r, -s.r, -s.r, s.r/2, 0, s.r);
-        ctx.bezierCurveTo(s.r, s.r/2, s.r, -s.r, 0,0);
-        ctx.fillStyle='#ff6ec7'; ctx.fill();
-      }else{
-        ctx.beginPath(); ctx.arc(0,0,s.r,0,Math.PI*2); ctx.fillStyle='#6ec3ff'; ctx.fill();
-      }
-      ctx.restore();
-    }
-    // Animate
-    function animate(){
-      ctx.clearRect(0,0,W,H);
-      for(const s of stars){
-        // Move stars toward mouse if close
-        let dx = mouse.x-s.x, dy = mouse.y-s.y, dist = Math.sqrt(dx*dx+dy*dy);
-        if(dist<80){ s.dx += dx/dist*0.2; }
-        s.update(); s.draw();
-      }
-      for(const s of shapes){ drawShape(s); s.t++; s.r+=0.5; if(s.t>30) shapes.shift(); }
-      requestAnimationFrame(animate);
-    }
-    animate();
-  </script>
-  <script>
-// Floating pyramid of sevens that follows the mouse (no variable conflicts)
-const pyramidCanvas777 = document.createElement('canvas');
-pyramidCanvas777.id = 'pyramid-777-canvas';
-pyramidCanvas777.style.position = 'fixed';
-pyramidCanvas777.style.pointerEvents = 'none';
-pyramidCanvas777.style.zIndex = '9999';
-document.body.appendChild(pyramidCanvas777);
-let pyramidW = window.innerWidth, pyramidH = window.innerHeight;
-pyramidCanvas777.width = pyramidW; pyramidCanvas777.height = pyramidH;
-window.addEventListener('resize', ()=>{
-  pyramidW=window.innerWidth; pyramidH=window.innerHeight;
-  pyramidCanvas777.width=pyramidW; pyramidCanvas777.height=pyramidH;
-});
-let pyramidMouse = {x:pyramidW/2, y:pyramidH/2};
-document.addEventListener('mousemove', e=>{ pyramidMouse.x=e.clientX; pyramidMouse.y=e.clientY; });
-document.addEventListener('touchmove', e=>{
-  if(e.touches.length){ pyramidMouse.x=e.touches[0].clientX; pyramidMouse.y=e.touches[0].clientY; }
-});
-function drawPyramid777(ctx, x, y, size=60){
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.font = `${size/3}px Papyrus, serif`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillStyle = '#ffd66b';
-  // Pyramid rows
-  for(let row=0; row<3; row++){
-    for(let col=0; col<=row; col++){
-      let px = (col-row/2)*size*0.7;
-      let py = row*size*0.6;
-      ctx.fillText('7', px, py);
-    }
-  }
-  ctx.restore();
-}
-function animatePyramid(){
-  const ctx = pyramidCanvas777.getContext('2d');
-  ctx.clearRect(0,0,pyramidW,pyramidH);
-  drawPyramid777(ctx, pyramidMouse.x, pyramidMouse.y, 60);
-  requestAnimationFrame(animatePyramid);
-}
-animatePyramid();
-</script>
 </body>
 </html>

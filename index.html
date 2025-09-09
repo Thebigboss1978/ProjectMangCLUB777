@@ -1,208 +1,257 @@
-<!DOCTYPE html>
-<html lang="en">
+I hate<!DOCTYPE html>
+<html lang="en" dir="ltr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>City Plaza Pyramids View Hotel</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Pharaohs' Portal — Giza Spiritual & Adventure Tours</title>
+  <meta name="description" content="Spiritual and adventure tours at Giza — Camel ride, Horse ride, Buggy, Full Journey. On the edge of history, we meet. Marhaba, Habibi." />
   <style>
-    :root {
-      --bg: #000;
-      --gold: #ffd66b;
-      --muted: #c9c9c9;
-      --accent: #4aa3ff;
+    :root{
+      --bg:#05060a; --gold:#ffd66b; --muted:#9aa3b2; --accent:#4aa3ff; --glyph:#ffd66b;
     }
-    body {
-      margin: 0;
-      font-family: "Trebuchet MS", sans-serif;
-      background: var(--bg);
-      color: white;
-      line-height: 1.6;
-    }
-    header {
-      position: relative;
-      background: url("assets/hero.jpg") center/cover no-repeat;
-      text-align: center;
-      padding: 100px 20px;
-    }
-    header h1 {
-      color: var(--gold);
-      font-size: 42px;
-      margin-bottom: 15px;
-      text-shadow: 0 0 15px #000;
-    }
-    header p {
-      max-width: 700px;
-      margin: auto;
-      color: #eee;
-      text-shadow: 0 0 10px #000;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 14px 28px;
-      background: var(--gold);
-      color: black;
-      text-decoration: none;
-      border-radius: 12px;
-      font-weight: bold;
-      font-size: 18px;
-      transition: all 0.3s ease;
-    }
-    .btn:hover { background: #fff2c0; transform: scale(1.05); }
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Noto Sans', Arial; background:var(--bg); color:#eee; overflow:hidden}
 
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    section h2 {
-      color: var(--gold);
-      margin-bottom: 20px;
-      font-size: 28px;
-    }
-    section p { max-width: 800px; margin: auto; color: var(--muted); }
+    /* Canvas layers */
+    canvas#bglayer{position:fixed;inset:0;z-index:0;display:block}
+    canvas#glyphLayer{position:fixed;inset:0;z-index:2;pointer-events:none}
+    #ui{position:fixed;inset:0;z-index:10;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:28px}
 
-    /* Tours Grid */
-    .tour-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      margin-top: 40px;
+    /* Intro portal */
+    .portal{
+      margin-top:6vh; text-align:center; max-width:920px; width:100%;
+      color:var(--gold);
+      filter:drop-shadow(0 10px 30px rgba(0,0,0,.6));
     }
-    .tour-card {
-      background: #111;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 0 12px rgba(255,214,107,0.3);
-      text-align: left;
-    }
-    .tour-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
-    .tour-card h3 { color: var(--gold); margin: 12px 0; }
-    .tour-card p { color: var(--muted); font-size: 14px; }
-    .tour-btn {
-      display: inline-block;
-      margin-top: 12px;
-      padding: 10px 18px;
-      background: var(--accent);
-      color: #fff;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 14px;
-      transition: 0.3s;
-    }
-    .tour-btn:hover { background: #6bb8ff; }
+    .logoOrb{width:84px;height:84px;border-radius:50%;background:linear-gradient(160deg,#0b0f1a,rgba(255,255,255,0.02));display:inline-grid;place-items:center;margin:0 auto;cursor:pointer;border:1px solid rgba(255,255,255,.06)}
+    .logoOrb .dots{width:58px;height:58px;border-radius:50%;background:
+      radial-gradient(circle at 70% 30%, #fff 0 2px, transparent 3px) 0 0/8px 8px,
+      radial-gradient(circle at 20% 80%, #9df 0 2px, transparent 3px) 4px 4px/8px 8px,
+      radial-gradient(circle at 40% 40%, #f9c 0 2px, transparent 3px) 2px 6px/8px 8px, #071019; box-shadow:0 0 30px rgba(255,210,110,.04) inset}
+    h1{font-size:clamp(20px,3.8vw,44px);margin:.4rem 0 0.4rem;letter-spacing:0.6px}
+    p.lead{color:var(--muted);font-size:1.05rem;margin-top:6px}
 
-    /* Gallery */
-    .gallery {
-      display: flex;
-      overflow-x: auto;
-      gap: 15px;
-      padding: 20px 0;
-      scroll-snap-type: x mandatory;
-    }
-    .gallery img {
-      height: 220px;
-      border-radius: 12px;
-      flex-shrink: 0;
-      scroll-snap-align: center;
-      box-shadow: 0 0 10px #000;
-    }
+    /* CTA */
+    .enterBtn{margin-top:18px;padding:12px 18px;border-radius:999px;background:linear-gradient(90deg,var(--gold),#ffb84d);color:#051423;text-decoration:none;font-weight:700;border:0;cursor:pointer}
+
+    /* Offers panel */
+    .offers{width:100%;max-width:1100px;margin:40px auto 90px;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:0 18px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,.02),rgba(255,255,255,.01));border-radius:18px;padding:18px;border:1px solid rgba(255,215,0,.06);backdrop-filter:blur(6px);box-shadow:0 6px 30px rgba(0,0,0,.6);transform-origin:center;transition:transform .28s ease, box-shadow .28s}
+    .card:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 18px 50px rgba(0,0,0,.7)}
+    .card h3{margin:0 0 6px;color:var(--gold);font-size:1.05rem}
+    .card .sub{color:var(--muted);font-size:.92rem}
+    .price{margin-top:8px;font-weight:800;color:var(--accent)}
+    .card .cta{margin-top:12px;display:flex;gap:8px}
+    .btn-w{padding:8px 12px;border-radius:10px;background:var(--gold);color:#061018;text-decoration:none;font-weight:700}
 
     /* Footer */
-    footer {
-      padding: 30px;
-      background: #111;
-      text-align: center;
-    }
-    footer img { max-height: 60px; }
-    footer a {
-      color: var(--gold);
-      text-decoration: none;
-      display: block;
-      margin-top: 10px;
-    }
-    .signature {
-      margin-top: 12px;
-      font-size: 13px;
-      color: var(--gold);
-      font-style: italic;
-    }
+    footer{width:100%;text-align:center;color:var(--muted);font-size:.95rem;padding-bottom:24px}
+
+    /* small labels Arabic/Salam */
+    .mini{position:absolute;right:18px;top:18px;color:var(--muted);font-size:.95rem}
+
+    /* responsive */
+    @media (max-width:900px){.offers{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:520px){.offers{grid-template-columns:1fr} .portal{margin-top:12vh}}
+
+    /* accessibility reduce motion */
+    @media (prefers-reduced-motion: reduce){ *{transition:none!important} }
   </style>
 </head>
 <body>
 
-<!-- Hero -->
-<header>
-  <h1>City Plaza Pyramids View Hotel</h1>
-  <p>Luxury comfort with a view of the Great Pyramids. Exclusive tours, airport transfers, and the warmest Egyptian hospitality.</p>
-  <a href="https://www.booking.com/Share-Ova7Oz" class="btn" target="_blank">Book Now</a>
-</header>
+  <!-- audio placeholder: do NOT overwrite user's external music; left empty so you can plug your file -->
+  <audio id="bgMusic" src="" preload="auto" loop></audio>
 
-<!-- About -->
-<section id="about">
-  <h2>About Us</h2>
-  <p>
-    Welcome to City Plaza Pyramids View Hotel. Just steps away from the wonders of Giza, 
-    we offer elegant rooms, premium dining, and personalized service. 
-    Your journey from the airport to the pyramids starts here.
-  </p>
-</section>
+  <!-- background canvases -->
+  <canvas id="bglayer"></canvas>
+  <canvas id="glyphLayer"></canvas>
 
-<!-- Tours -->
-<section id="tours">
-  <h2>Exclusive Tours</h2>
-  <div class="tour-grid">
-    <div class="tour-card">
-      <img src="assets/camel.jpg" alt="Camel Ride">
-      <h3>Camel Ride</h3>
-      <p>Walk the golden sands like kings of old. Distance: 3km — Price: $20–35</p>
-      <a href="https://wa.me/201119959829?text=Book%20Camel%20Ride" class="tour-btn" target="_blank">Book Now</a>
+  <div id="ui">
+    <div class="mini">Marhaba · Salaam Alaikum · مرحبا</div>
+
+    <div class="portal" role="banner">
+      <div class="logoOrb" id="orb" title="Enter the Portal" aria-hidden="false">
+        <div class="dots"></div>
+      </div>
+      <h1>On the edge of history — we meet.</h1>
+      <p class="lead">Welcome to Giza — a spiritual and adventurous gateway. Touch the orb, move your mouse, or press Enter to open the experience.</p>
+      <button class="enterBtn" id="enter">Enter the Experience</button>
     </div>
-    <div class="tour-card">
-      <img src="assets/horse.jpg" alt="Horse Ride">
-      <h3>Horse Ride</h3>
-      <p>Ride like an ancient knight across the desert horizon. Distance: 5km — Price: $25–40</p>
-      <a href="https://wa.me/201119959829?text=Book%20Horse%20Ride" class="tour-btn" target="_blank">Book Now</a>
-    </div>
-    <div class="tour-card">
-      <img src="assets/buggy.jpg" alt="Buggy Adventure">
-      <h3>Buggy Adventure</h3>
-      <p>Fast, thrilling, and free across the dunes. Distance: 10km — Price: $50–75</p>
-      <a href="https://wa.me/201119959829?text=Book%20Buggy%20Adventure" class="tour-btn" target="_blank">Book Now</a>
-    </div>
+
+    <section class="offers" id="offers" aria-hidden="true">
+      <div class="card" data-pack="camel">
+        <h3>Camel Ride — Pharaohs' Pilgrimage</h3>
+        <div class="sub">A ritual passage across golden sands — feel the footsteps of pilgrims and kings. Marhaba Habibi.</div>
+        <div class="price">Approx. 15–35 USD</div>
+        <div class="cta"><a class="btn-w" href="#" data-wa="Camel Ride">Book on WhatsApp</a></div>
+      </div>
+
+      <div class="card" data-pack="horse">
+        <h3>Horse Ride — Ride of the Divine Steed</h3>
+        <div class="sub">Mount like an ancient knight; follow the horizon into temples and tombs. Salaam.</div>
+        <div class="price">Approx. 13–30 USD</div>
+        <div class="cta"><a class="btn-w" href="#" data-wa="Horse Ride">Book on WhatsApp</a></div>
+      </div>
+
+      <div class="card" data-pack="buggy">
+        <h3>Buggy Adventure — Modern Chariot</h3>
+        <div class="sub">Feel the wind of Ra — fast, loud, and free across the dunes.</div>
+        <div class="price">Approx. 35–65 USD</div>
+        <div class="cta"><a class="btn-w" href="#" data-wa="Buggy Adventure">Book on WhatsApp</a></div>
+      </div>
+
+      <div class="card" data-pack="full">
+        <h3>Full Journey — Gate of Awareness</h3>
+        <div class="sub">All rituals combined — a door opens. Return changed; carry a new story.</div>
+        <div class="price">Approx. 90–220 USD</div>
+        <div class="cta"><a class="btn-w" href="#" data-wa="Full Journey">Book on WhatsApp</a></div>
+      </div>
+    </section>
+
+    <footer aria-hidden="true">Nazlet El‑Samman — Giza · Contact via WhatsApp · On the edge of history we meet.</footer>
   </div>
-</section>
 
-<!-- Gallery -->
-<section id="gallery">
-  <h2>Gallery</h2>
-  <div class="gallery">
-    <img src="assets/gallery1.jpg" alt="View 1">
-    <img src="assets/gallery2.jpg" alt="View 2">
-    <img src="assets/gallery3.jpg" alt="View 3">
-    <img src="assets/gallery4.jpg" alt="View 4">
-  </div>
-</section>
+<script>
+/* -----------------------------------------------------------------
+   Interactive background: particles + glyph-rain + triangular glyph-pyramid
+   - mouse controls particle repulsion
+   - orb morphs into rotating glyph pyramid on enter/click
+   - subtle sound synth on clicks (non-intrusive)
+   -----------------------------------------------------------------*/
+(function(){
+  const bgl = document.getElementById('bglayer');
+  const ggl = document.getElementById('glyphLayer');
+  const ui = document.getElementById('ui');
+  const offers = document.getElementById('offers');
+  const enter = document.getElementById('enter');
+  const orb = document.getElementById('orb');
+  const waButtons = document.querySelectorAll('[data-wa]');
 
-<!-- Contact -->
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p><strong>WhatsApp:</strong> +201119959829</p>
-  <p><strong>Email:</strong> email </p>
-</section>
+  // resize
+  function fit(c){ const dpr = Math.min(2, window.devicePixelRatio||1); c.width = Math.floor(innerWidth * dpr); c.height = Math.floor(innerHeight * dpr); c.style.width = innerWidth + 'px'; c.style.height = innerHeight + 'px'; const ctx = c.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0); return ctx; }
+  const bg = fit(bgl), glyphCtx = fit(ggl);
 
-<!-- Footer -->
-<footer>
-  <a href="https://alarabclub777ai.vercel.app/" target="_blank">
-    <img src="assets/Al-Arab Club 777 Logo.PNG" alt="Al Arab Club 777 Logo" />
-  </a>
-  <a href="about.html">About Us</a>
-  <div class="signature">✨ Powered with Spirit — AlArab 777 ✨</div>
-</footer>
+  // particles grid
+  const particles = [];
+  const cols = Math.floor(innerWidth/36), rows = Math.floor(innerHeight/36);
+  for(let y=0;y<rows;y++) for(let x=0;x<cols;x++){ particles.push({x:x*36 + 18 + (Math.random()-0.5)*8, y:y*36 + 18 + (Math.random()-0.5)*8, vx:0, vy:0, baseX:null, baseY:null}); }
+  particles.forEach(p=>{ p.baseX=p.x; p.baseY=p.y; });
 
+  // glyph characters (hieroglyphic + letters)
+  const glyphs = ['𓂀','𓆣','𓋹','𓊹','𓏏','𓎛','*','•','+','▲','△','/','\\'];
+
+  // mouse
+  const mouse = {x:innerWidth/2, y:innerHeight/2, down:false};
+  addEventListener('mousemove', e=>{ mouse.x=e.clientX; mouse.y=e.clientY; document.body.style.setProperty('--x', e.clientX+'px'); document.body.style.setProperty('--y', e.clientY+'px'); });
+  addEventListener('pointerdown', e=>{ mouse.down=true; burst(e.clientX,e.clientY); });
+  addEventListener('pointerup', e=>{ mouse.down=false; });
+
+  // glyph rain
+  const rain = [];
+  function spawnRain(){ const x = Math.random()*innerWidth; const ch = glyphs[(Math.random()*glyphs.length)|0]; rain.push({x, y:-20, ch, vy:1+Math.random()*2, alpha:0.8}); if(rain.length>220) rain.shift(); }
+  setInterval(spawnRain, 120);
+
+  // pyramid state
+  let pyramidActive=false; let pyramidAngle=0; let pyramidR=180;
+  const pyramidParticles = []; // will hold 3D points for glyphs
+
+  function buildPyramid(){ pyramidParticles.length=0; // stack layers
+    const baseSize = 14; let index=0;
+    for(let layer=0;layer<baseSize;layer++){
+      const rowCount = baseSize - layer;
+      const y = -layer*10; // vertical offset
+      for(let i=0;i<rowCount;i++){
+        for(let j=0;j<rowCount;j++){
+          const px = (i - rowCount/2)*14 + (j - rowCount/2)*6;
+          const pz = (j - rowCount/2)*12;
+          pyramidParticles.push({x:px, y:y, z:pz, ch:glyphs[(index++)%glyphs.length], ox:px, oy:y, oz:pz, vx:0, vy:0, vz:0});
+        }
+      }
+    }
+  }
+
+  buildPyramid();
+
+  // audio synth
+  let audioCtx=null; function ensureAudio(){ if(!audioCtx){ try{ audioCtx=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ audioCtx=null; } } return audioCtx; }
+  function synthClick(){ const ac=ensureAudio(); if(!ac) return; const t=ac.currentTime; const o=ac.createOscillator(), g=ac.createGain(); o.type='sine'; o.frequency.setValueAtTime(220+Math.random()*120,t); g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(0.09,t+0.02); g.gain.exponentialRampToValueAtTime(0.0001,t+0.9); o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t+0.9); }
+
+  // burst effect
+  function burst(x,y){ // push nearby particles, spawn glyphs
+    synthClick();
+    for(let p of particles){ const dx=p.x-x, dy=p.y-y, d=Math.hypot(dx,dy); if(d<180){ const f=(180-d)/180; p.vx += (dx/d||0.5)*(-1.5*f - Math.random()*2); p.vy += (dy/d||0.5)*(-1.5*f - Math.random()*2); }}
+    // a few rain glyphs
+    for(let i=0;i<8;i++){ rain.push({x:x + (Math.random()-0.5)*60, y:y + (Math.random()-0.5)*60, ch:glyphs[(Math.random()*glyphs.length)|0], vy:1+Math.random()*3, alpha:1}); }
+  }
+
+  // orb click -> open portal -> show offers
+  function openPortal(){ if(pyramidActive) return; pyramidActive=true; offers.setAttribute('aria-hidden','false'); offers.style.display='grid'; // reveal offers
+    // animate pyramid orbit and smooth camera
+    // increase rain density briefly
+    for(let i=0;i<120;i++) spawnRain();
+    // visual burst center
+    burst(innerWidth/2, innerHeight/2);
+    setTimeout(()=>{ document.getElementById('offers').scrollIntoView({behavior:'smooth', block:'center'}); }, 800);
+  }
+
+  orb.addEventListener('click', ()=>{ openPortal(); });
+  enter.addEventListener('click', ()=>{ openPortal(); });
+  addEventListener('keydown', e=>{ if(e.key==='Enter') openPortal(); });
+
+  // WhatsApp links
+  waButtons.forEach(b=>{
+    b.addEventListener('click', e=>{
+      e.preventDefault(); const pack = b.getAttribute('data-wa'); const num='201000000000'; // replace with your number
+      const msg = `${pack} - I want to book. Spiritual/Adventure inquiry. On the edge of history.`;
+      window.open(`https://wa.me/${num}?text=${encodeURIComponent(msg)}`,'_blank');
+    });
+  });
+
+  // draw loop
+  function tick(){ requestAnimationFrame(tick); // update physics
+    // particles
+    for(let p of particles){ // spring back
+      p.vx += (p.baseX - p.x)*0.02; p.vy += (p.baseY - p.y)*0.02; // mouse repulsion
+      const dx = p.x - mouse.x, dy = p.y - mouse.y; const d=Math.hypot(dx,dy); if(d<160){ const f=(160-d)/160; p.vx += (dx/d||0.5)*f*8; p.vy += (dy/d||0.5)*f*8; }
+      p.vx *= 0.86; p.vy *= 0.86; p.x += p.vx; p.y += p.vy;
+    }
+
+    // rain fall
+    for(let r of rain){ r.y += r.vy; r.vy += 0.02; r.alpha *= 0.999; }
+    while(rain.length && rain[0].y>innerHeight+60) rain.shift();
+
+    // pyramid rotation
+    if(pyramidActive){ pyramidAngle += 0.009; }
+
+    // clear bg
+    bg.clearRect(0,0,innerWidth,innerHeight);
+    // draw vignette + subtle nebula
+    const g = bg.createLinearGradient(0,0,0,innerHeight); g.addColorStop(0,'rgba(8,10,12,0.0)'); g.addColorStop(1,'rgba(0,0,0,0.6)'); bg.fillStyle = g; bg.fillRect(0,0,innerWidth,innerHeight);
+
+    // particles dots
+    for(let p of particles){ bg.beginPath(); const r = 1.2; bg.fillStyle = 'rgba(255,214,107,0.9)'; bg.arc(p.x,p.y,r,0,Math.PI*2); bg.fill(); }
+
+    // rain glyphs
+    glyphCtx.clearRect(0,0,innerWidth,innerHeight);
+    glyphCtx.font = '18px serif'; glyphCtx.textAlign='center'; glyphCtx.textBaseline='middle';
+    for(let i=0;i<rain.length;i++){ const R=rain[i]; glyphCtx.globalAlpha = Math.max(0.06, Math.min(1, R.alpha)); glyphCtx.fillStyle = 'rgba(255,214,107,0.98)'; glyphCtx.fillText(R.ch, R.x, R.y); }
+
+    // rotating pyramid (draw as projected 3D)
+    if(pyramidActive){
+      // simple 3D rotate around Y
+      const cx = innerWidth/2, cy = innerHeight*0.46;
+      const cos = Math.cos(pyramidAngle), sin = Math.sin(pyramidAngle);
+      for(let pp of pyramidParticles){ const x = pp.ox, y = pp.oy, z = pp.oz; const rx = x*cos - z*sin; const rz = x*sin + z*cos; const scale = 1 + (rz / 1000); const sx = cx + rx*1.0; const sy = cy + y*1.0 - rz*0.04; const alpha = 0.9 - (rz/800); glyphCtx.globalAlpha = Math.max(0.08, Math.min(1, alpha)); glyphCtx.fillStyle = 'rgba(255,214,107,0.98)'; glyphCtx.fillText(pp.ch, sx, sy); }
+    }
+
+  }
+
+  tick();
+
+  // responsiveness
+  addEventListener('resize', ()=>{ fit(bgl); fit(ggl); });
+
+})();
+</script>
 </body>
 </html>

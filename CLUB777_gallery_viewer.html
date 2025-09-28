@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"/>
+<title>CLUB777 — Gallery Viewer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<style>
+body{margin:0;background:#0b0f14;color:#e8edf3;font-family:system-ui,Segoe UI,Roboto,Arial}
+.wrap{max-width:1200px;margin:30px auto;padding:0 20px}
+h1{color:#ffd66b;font-size:28px;margin-bottom:10px}
+.subtitle{color:#9aa3b2;font-size:14px;margin-bottom:20px}
+.search{width:100%;padding:12px 16px;margin-bottom:20px;border-radius:12px;border:1px solid rgba(255,255,255,.08);background:#0c1117;color:#e8edf3}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px}
+.card{background:#10151c;border:1px solid rgba(255,255,255,.08);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 6px 18px rgba(0,0,0,.5)}
+.card-header{padding:14px 16px;background:rgba(255,214,107,.08);color:#ffd66b;font-weight:bold}
+.card-body{flex:1;padding:16px}
+.card-body small{display:block;color:#9aa3b2;margin-bottom:6px}
+.card-footer{padding:12px 16px;background:#0c1117;text-align:left}
+.card-footer a{color:#ffd66b;text-decoration:none;font-weight:bold}
+.card-footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>شبكة مشروع العرّاب — CLUB777</h1>
+  <div class="subtitle">معرض الإنجازات والبوابات (اضغط على البطاقة للفتح)</div>
+  <input id="q" class="search" placeholder="بحث سريع بالاسم أو النوع أو المصدر…"/>
+  <div id="gallery" class="grid"></div>
+</div>
+<script>
+const data = [{"Project\/Folder":"CLUB777 \/ بوابة التحويل","File Name":"al_arab_club_777_universal_file→text→pro_report_single_file_app.html","Type":"HTML App","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/14YBv963pYeudtuEbGYPfMPhtRazbB8ou"},{"Project\/Folder":"CLUB777 \/ بوابة التحويل (نسخة قديمة)","File Name":"al_arab_club_777_universal_file→text→pro_report_single_file_app.html","Type":"HTML App","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/1nWONBJhD4rDrti61HG1KRQ8Mkb9cJS3O"},{"Project\/Folder":"CLUB777 \/ Templates","File Name":"NIA_Template_AlArabClub777.xlsx","Type":"Spreadsheet","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/1TJQzbUJEdhGlhT3Xb3mH1UdNdAoJtTst"},{"Project\/Folder":"CLUB777 \/ Templates","File Name":"Copy of NIA_Template_AlArabClub777.xlsx","Type":"Spreadsheet","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/1LWzJoRaUJKdG9uDxNljlRvXUVOuwpG1w"},{"Project\/Folder":"CLUB777 \/ Templates","File Name":"Copy of NIA_Template_AlArabClub777.xlsx","Type":"Spreadsheet","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/1XdnnL4go9be_XNFKK2QkwF4YA10ieC3z"},{"Project\/Folder":"CLUB777 \/ Portals","File Name":"giza-pyramids-portal.html","Type":"HTML App","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/1RR4eotIxrmHWmbDx_9VqIxl2QDeNMLRG"},{"Project\/Folder":"CLUB777 \/ Portals","File Name":"giza-pyramids-portal.html (alt)","Type":"HTML App","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/1u8R-5lAyAnSLc-7c8q71vKh9BBxIlIA"},{"Project\/Folder":"CLUB777 \/ Portals","File Name":"club777.html","Type":"HTML App","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/1AiVE_Rf1pmKd2_dvltOj-8hD_ZqFbaHC"},{"Project\/Folder":"CLUB777 \/ Admin","File Name":"AlArabClub777_resources.xlsx","Type":"Spreadsheet (keys)","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/11Z0Ujd9bIGia8SUKNu1r35iq-Xb_lrhR"},{"Project\/Folder":"CLUB777 \/ Portals","File Name":"AlArabClub777.html.html","Type":"HTML App","Source":"Google Drive","Link":"https:\/\/drive.google.com\/file\/d\/1KL1KfHujQeYfZ-Vf9cf-JqJuGliGMKSA"}];
+
+function render(filter=""){
+  const g = document.getElementById("gallery");
+  g.innerHTML = "";
+  const f = filter.trim().toLowerCase();
+  data.filter(it=>{
+    const t = (it["File Name"]+" "+it["Type"]+" "+it["Source"]+" "+it["Project/Folder"]).toLowerCase();
+    return !f || t.includes(f);
+  }).forEach(it=>{
+    const card = document.createElement("div");
+    card.className="card";
+    const h = document.createElement("div");
+    h.className="card-header";
+    h.textContent=it["Project/Folder"];
+    const b = document.createElement("div");
+    b.className="card-body";
+    b.innerHTML = `<strong>${it["File Name"]}</strong><small>${it["Type"]}</small><small>${it["Source"]}</small>`;
+    const ftr = document.createElement("div");
+    ftr.className="card-footer";
+    const a = document.createElement("a");
+    a.href = it["Link"];
+    a.target="_blank";
+    a.rel="noopener";
+    a.textContent="فتح الملف";
+    ftr.appendChild(a);
+    card.appendChild(h);
+    card.appendChild(b);
+    card.appendChild(ftr);
+    g.appendChild(card);
+  });
+}
+
+document.getElementById("q").addEventListener("input",(e)=>render(e.target.value));
+render();
+</script>
+</body>
+</html>
